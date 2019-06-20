@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Tecnospeed.NFSE
+/Tecnospeed.NFSE/bin/Debug/net461
+/Tecnospeed.NFSE/obj
+/Tecnospeed.NFSE/Properties
+/Tecnospeed.NFSE.Tests/bin/Debug/net461
+/Tecnospeed.NFSE.Tests/obj
+/TestResults
+/Tecnospeed.NFSE/Tecnospeed.NFSE.csproj.user

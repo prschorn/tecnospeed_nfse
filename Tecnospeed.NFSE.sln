@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecnospeed.NFSE", "Tecnospeed.NFSE\Tecnospeed.NFSE.csproj", "{70CE2BAB-6BD7-409C-A0A0-1B8955D6C9C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecnospeed.NFSE.Tests", "Tecnospeed.NFSE.Tests\Tecnospeed.NFSE.Tests.csproj", "{EC736170-8BC4-47D0-83C4-13B6124F0C37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70CE2BAB-6BD7-409C-A0A0-1B8955D6C9C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70CE2BAB-6BD7-409C-A0A0-1B8955D6C9C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70CE2BAB-6BD7-409C-A0A0-1B8955D6C9C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70CE2BAB-6BD7-409C-A0A0-1B8955D6C9C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC736170-8BC4-47D0-83C4-13B6124F0C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC736170-8BC4-47D0-83C4-13B6124F0C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC736170-8BC4-47D0-83C4-13B6124F0C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC736170-8BC4-47D0-83C4-13B6124F0C37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77EDEA63-343A-407B-91A5-64B4307498A1}
+	EndGlobalSection
+EndGlobal
