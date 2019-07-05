@@ -12,6 +12,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
+using Tecnospeed.Database.Models;
+using Tecnospeed.Database.Models.Interfaces;
+using Tecnospeed.Database.Repositories;
+using Tecnospeed.Database.Repositories.Interfaces;
 using Tecnospeed.NFSE.Models;
 using Tecnospeed.NFSE.Models.Interfaces;
 
@@ -33,6 +37,12 @@ namespace Tecnospeed.NFSE
       services.AddHttpClient();
       services.AddScoped<IAuthentication, Authentication>();
       services.AddScoped<INFSE, NFSEHandler>();
+
+      //database interfaces
+      services.AddScoped<INfseRepository, NfseRepository>();
+      services.AddScoped<ITecnospeedDbContext, TecnospeedDbContext>();
+      services.AddScoped<ITecnospeedDbContextFactory, TecnospeedDbContextFactory>();
+
 
       services.Configure<IISServerOptions>(options =>
       {

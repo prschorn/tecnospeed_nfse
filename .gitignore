@@ -10,3 +10,6 @@
 /Tecnospeed.NFSE.Tests/obj
 /TestResults
 /Tecnospeed.NFSE/Tecnospeed.NFSE.csproj.user
+/packages/EntityFramework.6.2.0
+/Tecnospeed.Database/bin/Debug
+/Tecnospeed.Database/obj/Debug

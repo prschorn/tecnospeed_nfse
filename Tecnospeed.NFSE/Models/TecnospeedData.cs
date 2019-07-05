@@ -13,5 +13,6 @@ namespace Tecnospeed.NFSE.Models
     public static string cnpj { get; set; }
     public static string grupo { get; set; }
     public static string inscMunicipal { get; set; }
+    public static string nomeCidade { get; set; }
   }
 }
