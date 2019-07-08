@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tecnospeed.Database.Models.DTOs;
-using Tecnospeed.Database.Models.Entities;
+using LiterateElephant.Common.Model;
 using Tecnospeed.Database.Models.Interfaces;
 using Tecnospeed.Database.Repositories.Interfaces;
 
@@ -21,11 +21,11 @@ namespace Tecnospeed.Database.Repositories
       {
         try
         {
-          var result = new Nota
+          var result = new Invoice
           {
             //TODO - ADICIONAR CAMPOS
           };
-          dbContext.Notas.Add(result);
+          dbContext.Invoices.Add(result);
           await dbContext.SaveChangesAsync();
         }
         catch (Exception)

@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,10 +26,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,33 +64,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201907021654496_initial_create.cs" />
-    <Compile Include="Migrations\201907021654496_initial_create.Designer.cs">
-      <DependentUpon>201907021654496_initial_create.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907021746254_Nota.cs" />
-    <Compile Include="Migrations\201907021746254_Nota.Designer.cs">
-      <DependentUpon>201907021746254_Nota.cs</DependentUpon>
+    <Compile Include="Migrations\201907082142577_refactor.cs" />
+    <Compile Include="Migrations\201907082142577_refactor.Designer.cs">
+      <DependentUpon>201907082142577_refactor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Config\Finnancial\CategoryAppearInsideConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\CategoryConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\CostCenterConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ClientConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\AccountConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\BillsToPayConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\BillsToReceiveConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ContactConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ContractConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ProviderConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\IndicatorStateSubConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ItemConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\InvoiceConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ProductConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\RepeatTypeConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ServiceConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ServiceTypeConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ValidityEndConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\ClientTypeConfiguration.cs" />
+    <Compile Include="Models\Config\Finnancial\PersonTypeConfiguration.cs" />
     <Compile Include="Models\DTOs\NFSEDto.cs" />
-    <Compile Include="Models\Entities\Categoria.cs" />
-    <Compile Include="Models\Entities\CentroCusto.cs" />
-    <Compile Include="Models\Entities\Cliente.cs" />
-    <Compile Include="Models\Entities\Conta.cs" />
-    <Compile Include="Models\Entities\ContasPagar.cs" />
-    <Compile Include="Models\Entities\ContasReceber.cs" />
-    <Compile Include="Models\Entities\Contato.cs" />
-    <Compile Include="Models\Entities\Contrato.cs" />
-    <Compile Include="Models\Entities\Fornecedor.cs" />
-    <Compile Include="Models\Entities\IndicadorInscEstadual.cs" />
+    <Compile Include="Models\Entities\Category.cs" />
+    <Compile Include="Models\Entities\CategoryAppearInside.cs" />
+    <Compile Include="Models\Entities\CostCenter.cs" />
+    <Compile Include="Models\Entities\Client.cs" />
+    <Compile Include="Models\Entities\Account.cs" />
+    <Compile Include="Models\Entities\BillsToPay.cs" />
+    <Compile Include="Models\Entities\BillsToReceive.cs" />
+    <Compile Include="Models\Entities\Contact.cs" />
+    <Compile Include="Models\Entities\Contract.cs" />
+    <Compile Include="Models\Entities\Provider.cs" />
+    <Compile Include="Models\Entities\IndicatorStateSub.cs" />
     <Compile Include="Models\Entities\Item.cs" />
-    <Compile Include="Models\Entities\Nota.cs" />
-    <Compile Include="Models\Entities\Produto.cs" />
-    <Compile Include="Models\Entities\RepetirTipo.cs" />
-    <Compile Include="Models\Entities\TerminoVigencia.cs" />
-    <Compile Include="Models\Entities\TipoCliente.cs" />
-    <Compile Include="Models\Entities\TipoPessoa.cs" />
+    <Compile Include="Models\Entities\Invoice.cs" />
+    <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Entities\RepeatType.cs" />
+    <Compile Include="Models\Entities\Service.cs" />
+    <Compile Include="Models\Entities\ServiceType.cs" />
+    <Compile Include="Models\Entities\ValidityEnd.cs" />
+    <Compile Include="Models\Entities\ClientType.cs" />
+    <Compile Include="Models\Entities\PersonType.cs" />
     <Compile Include="Models\Interfaces\ITecnospeedDbContext.cs" />
     <Compile Include="Models\Interfaces\ITecnospeedDbContextFactory.cs" />
     <Compile Include="Models\TecnospeedDbContext.cs" />
@@ -105,23 +124,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907021654496_initial_create.resx">
-      <DependentUpon>201907021654496_initial_create.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907021746254_Nota.resx">
-      <DependentUpon>201907021746254_Nota.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="LocalDb\TecnospeedDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="LocalDb\TecnospeedDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>TecnospeedDb.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
@@ -132,6 +134,20 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LocalDb\TecnoSpeedDb.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocalDb\TecnoSpeedDb_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>TecnoSpeedDb.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907082142577_refactor.resx">
+      <DependentUpon>201907082142577_refactor.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

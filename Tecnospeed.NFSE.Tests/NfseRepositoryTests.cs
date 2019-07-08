@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tecnospeed.Database.Models.DTOs;
 using Tecnospeed.Database.Repositories.Interfaces;
-using Tecnospeed.Database.Models.Entities;
+using LiterateElephant.Common.Model;
 using Xunit;
 using Moq;
 using Tecnospeed.Database.Models;
@@ -28,7 +28,7 @@ namespace Tecnospeed.NFSE.Tests
     public void SaveInformationAsync_ReturnsEntity_When_DataIsValid()
     {
       //arrange
-      this.mockDbcontext.Setup(x => x.Notas.Add(It.IsAny<Nota>())).Returns(new Nota());
+      this.mockDbcontext.Setup(x => x.Invoices.Add(It.IsAny<Invoice>())).Returns(new Invoice());
       this.mockDbcontext.Setup(x => x.SaveChangesAsync()).Returns(new Task<int>(() => { return 1; }));
 
       //act
@@ -42,7 +42,7 @@ namespace Tecnospeed.NFSE.Tests
     public void SaveInformationAsync_ThrowsException_When_DataIsInvalid()
     {
       //Arrange
-      this.mockDbcontext.Setup(x => x.Notas.Add(It.IsAny<Nota>())).Returns(new Nota());
+      this.mockDbcontext.Setup(x => x.Invoices.Add(It.IsAny<Invoice>())).Returns(new Invoice());
       this.mockDbcontext.Setup(x => x.SaveChangesAsync()).Returns(new Task<int>(() => { return -1; }));
 
       //Act

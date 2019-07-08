@@ -1,4 +1,4 @@
-﻿using Tecnospeed.Database.Models.Entities;
+﻿using LiterateElephant.Common.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,24 +20,26 @@ namespace Tecnospeed.Database.Models
 
     }
 
-    public virtual IDbSet<Cliente> Clientes { get; set; }
-    public virtual IDbSet<Contato> Contatos { get; set; }
-    public virtual IDbSet<TipoCliente> TiposCliente { get; set; }
-    public virtual IDbSet<IndicadorInscEstadual> IndicadoresInscEstadual { get; set; }
-
-    public virtual IDbSet<Categoria> Categorias { get; set; }
-    public virtual IDbSet<CentroCusto> CentroCustos { get; set; }
-    public virtual IDbSet<Conta> Contas { get; set; }
-    public virtual IDbSet<ContasPagar> ContasPagar { get; set; }
-    public virtual IDbSet<ContasReceber> ContasReceber { get; set; }
-    public virtual IDbSet<Fornecedor> Fornecedores { get; set; }
-    public virtual IDbSet<RepetirTipo> RepetirTipos { get; set; }
-    public virtual IDbSet<TerminoVigencia> TerminoVigencias { get; set; }
-    public virtual IDbSet<Produto> Produtos { get; set; }
-    public virtual IDbSet<Item> Itens { get; set; }
-    public virtual IDbSet<TipoPessoa> TiposPessoa { get; set; }
-    public virtual IDbSet<Contrato> Contratos { get; set; }
-    public virtual IDbSet<Nota> Notas { get; set; }
+    public virtual IDbSet<Client> Clients { get; set; }
+    public virtual IDbSet<Contact> Contacts { get; set; }
+    public virtual IDbSet<ClientType> ClientTypes { get; set; }
+    public virtual IDbSet<IndicatorStateSub> IndicatorStateSubs { get; set; }
+    public virtual IDbSet<Category> Categories { get; set; }
+    public virtual IDbSet<CategoryAppearInside> CategoriesAppearInside { get; set; }
+    public virtual IDbSet<CostCenter> CostCenters { get; set; }
+    public virtual IDbSet<Account> Accounts { get; set; }
+    public virtual IDbSet<BillsToPay> BillsToPay { get; set; }
+    public virtual IDbSet<BillsToReceive> BillsToReceive { get; set; }
+    public virtual IDbSet<Provider> Providers { get; set; }
+    public virtual IDbSet<RepeatType> RepeatTypes { get; set; }
+    public virtual IDbSet<ValidityEnd> ValidityEnds { get; set; }
+    public virtual IDbSet<Product> Products { get; set; }
+    public virtual IDbSet<Item> Items { get; set; }
+    public virtual IDbSet<PersonType> PersonTypes  { get; set; }
+    public virtual IDbSet<Contract> Contracts { get; set; }
+    public virtual IDbSet<Invoice> Invoices { get; set; }
+    public virtual IDbSet<Service> Services { get; set; }
+    public virtual IDbSet<ServiceType> ServiceTypes { get; set; }
 
 
   }

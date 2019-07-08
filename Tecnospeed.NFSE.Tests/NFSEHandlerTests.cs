@@ -45,7 +45,7 @@ namespace Tecnospeed.NFSE.Tests
         BaseAddress = new Uri(ExpectedUri)
       };
 
-      this.nfseHandler = new NFSEHandler(this.mockAuth.Object, httpClient);
+      this.nfseHandler = new NFSEHandler(this.mockAuth.Object);
       
 
       //Act

@@ -4,29 +4,32 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tecnospeed.Database.Models.Entities;
+using LiterateElephant.Common.Model;
 
 namespace Tecnospeed.Database.Models.Interfaces
 {
   public interface ITecnospeedDbContext
   {
     Task<int> SaveChangesAsync();
-    IDbSet<Cliente> Clientes { get; set; }
-    IDbSet<Contato> Contatos { get; set; }
-    IDbSet<TipoCliente> TiposCliente { get; set; }
-    IDbSet<IndicadorInscEstadual> IndicadoresInscEstadual { get; set; }
-    IDbSet<Categoria> Categorias { get; set; }
-    IDbSet<CentroCusto> CentroCustos { get; set; }
-    IDbSet<Conta> Contas { get; set; }
-    IDbSet<ContasPagar> ContasPagar { get; set; }
-    IDbSet<ContasReceber> ContasReceber { get; set; }
-    IDbSet<Fornecedor> Fornecedores { get; set; }
-    IDbSet<RepetirTipo> RepetirTipos { get; set; }
-    IDbSet<TerminoVigencia> TerminoVigencias { get; set; }
-    IDbSet<Produto> Produtos { get; set; }
-    IDbSet<Item> Itens { get; set; }
-    IDbSet<TipoPessoa> TiposPessoa { get; set; }
-    IDbSet<Contrato> Contratos { get; set; }
-    IDbSet<Nota> Notas { get; set; }
+    IDbSet<Client> Clients { get; set; }
+    IDbSet<Contact> Contacts { get; set; }
+    IDbSet<ClientType> ClientTypes { get; set; }
+    IDbSet<IndicatorStateSub> IndicatorStateSubs { get; set; }
+    IDbSet<Category> Categories { get; set; }
+    IDbSet<CategoryAppearInside> CategoriesAppearInside { get; set; }
+    IDbSet<CostCenter> CostCenters { get; set; }
+    IDbSet<Account> Accounts { get; set; }
+    IDbSet<BillsToPay> BillsToPay { get; set; }
+    IDbSet<BillsToReceive> BillsToReceive { get; set; }
+    IDbSet<Provider> Providers { get; set; }
+    IDbSet<RepeatType> RepeatTypes { get; set; }
+    IDbSet<ValidityEnd> ValidityEnds { get; set; }
+    IDbSet<Product> Products { get; set; }
+    IDbSet<Item> Items { get; set; }
+    IDbSet<PersonType> PersonTypes { get; set; }
+    IDbSet<Contract> Contracts { get; set; }
+    IDbSet<Invoice> Invoices { get; set; }
+    IDbSet<Service> Services { get; set;}
+    IDbSet<ServiceType> ServiceTypes { get; set; }
   }
 }

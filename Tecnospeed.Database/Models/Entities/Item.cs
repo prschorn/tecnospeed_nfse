@@ -4,20 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Tecnospeed.Database.Models.Entities
+namespace LiterateElephant.Common.Model
 {
   public class Item
   {
-    [Index(IsUnique = true)]
     public int Id { get; set; }
 
-    public string Detalhes { get; set; }
-    public int Quantidade { get; set; }
-    public decimal Valor { get; set; }
+    public string Details { get; set; }
+    public int Quantity { get; set; }
+    public decimal Value { get; set; }
     public decimal Subtotal { get; set; }
     public int ItemId { get; set; }
 
-    public virtual Produto Produto { get; set; }
+    public virtual Product Product { get; set; }
 
   }
 }

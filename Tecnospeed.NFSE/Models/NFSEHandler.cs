@@ -43,7 +43,7 @@ namespace Tecnospeed.NFSE.Models
       return dtoResponse;
     }
 
-    public async Task<byte[]> PrintNfseFile(string NumNfse)
+    public async Task<byte[]> PrintNfseFile(string numNfse)
     {
       using (var httpClient = new HttpClient())
       {
