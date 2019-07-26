@@ -17,14 +17,15 @@ namespace Tecnospeed.NFSE.Models
       {
         throw new Exception("Dados inválidos para gerar nota, verifique sua requisição.");
       }
-      return @"formato=tx2
+            return "formato%3Dtx2%0Apadrao%3DTecnoNFSe%0ACidade%3DMaringaPR%0AINCLUIR%0AIdLote%3D31%0ANumeroLote%3D8594%0ACpfCnpjRemetente%3D08187168000160%0AInscricaoMunicipalRemetente%3D8214100028%0ARazaoSocialRemetente%3DTecnospeed+TI%0AQuantidadeRps%3D1%0ACodigoCidadeRemetente%3D41%0ATransacao%3D1%0ADataInicio%3D2017-02-23%0AVersao%3D3.10%0AValorTotalServicos%3D1.00%0AValorTotalDeducoes%3D0%0AValorTotalBaseCalculo%3D1.00%0ASALVAR%0A%0AINCLUIRRPS%0ADataEmissao%3D2017-02-23%0AIdRps%3DR1%0ANumeroRps%3D1%0ASerieRps%3D953%0ATipoRps%3D1%0AOptanteSimplesNacional%3D2%0AIncentivadorCultural%3D1%0AExigibilidadeISS%3D1%0AIncentivoFiscal%3D2%0ASituacaoNota%3D1%0ATipoTributacao%3D1%0ANaturezaTributacao%3D1%0ARegimeEspecialTributacao%3D0%0A%0AValorServicos%3D30.00%0AValorDeducoes%3D0%0AValorPis%3D2.33%0AValorCofins%3D4.00%0AValorInss%3D0.00%0AValorIr%3D0.00%0AValorCsll%3D2.00%0AIssRetido%3D2%0AValorIss%3D3.00%0AValorIssRetido%3D3.50%0ABaseCalculo%3D0%0AValorLiquidoNfse%3D300.00%0ADescontoIncondicionado%3D0.00%0ADescontoCondicionado%3D0.00%0AAliquotaISS%3D3%0AAliquotaPIS%3D200%0AAliquotaCOFINS%3D200%0AAliquotaINSS%3D200%0AAliquotaIR%3D200%0AAliquotaCSLL%3D200%0ACodigoItemListaServico%3D0107%0ACodigoCnae%3D6611801%0ACodigoTributacaoMunicipio%3D4115200%0ADiscriminacaoServico%3DLicenciamento+de+Software.%0ACodigoCidadePrestacao%3D4115200%0ADescricaoCidadePrestacao%3DMARINGA%0A%0ACpfCnpjPrestador%3D08187168000160%0AInscricaoMunicipalPrestador%3D096650%0ARazaoSocialPrestador%3DTecnospeed+T.I.%0ADDDPrestador%3D44%0ATelefonePrestador%3D30284665%0A%0ACpfCnpjTomador%3D08114280956%0ARazaoSocialTomador%3DTeste+NFSe%0AInscricaoMunicipalTomador%3D%0AInscricaoEstadualTomador%3D%0ATipoLogradouroTomador%3DRUA%0AEnderecoTomador%3DJURANDA+MARIGUTTI%0ANumeroTomador%3D2946%0AComplementoTomador%3DEDF.+VILLA+MIX%0ATipoBairroTomador%3DJARDIM%0ABairroTomador%3DCENTRO%0ACodigoCidadeTomador%3D44%0ADescricaoCidadeTomador%3DMARINGA%0AUfTomador%3DPR%0ACepTomador%3D87015983%0ADDDTomador%3D044%0ATelefoneTomador%3D4430147841%0AEmailTomador%3D%0A%0APercentualDeduzir%3D0%0AQuantidadeServicos%3D1%0AValorUnitarioServico%3D30.00%0ASALVARRPS";
+      return HttpUtility.UrlEncode(@"formato=tx2
 padrao=TecnoNFSe
-NomeCidade=
+Cidade=PortoAlegreRS
 
 INCLUIR
 NumeroLote=1
-CPFCNPJRemetente=08187168000160
-InscricaoMunicipalRemetente=081871680
+CPFCNPJRemetente=18110449000178
+InscricaoMunicipalRemetente=56713126
 ValorTotalServicos=0.10
 ValorTotalDeducoes=0.00
 ValorTotalBaseCalculo=0.10
@@ -35,11 +36,11 @@ INCLUIRRPS
 SituacaoNota=1
 TipoRps=1
 SerieRps=1
-NumeroRps=1
-DataEmissao=2019-07-04T00:00:00
-Competencia=2019-07-04
-CpfCnpjPrestador=08187168000160
-InscricaoMunicipalPrestador=081871680
+NumeroRps=5001
+DataEmissao=2019-07-09T00:00:00
+Competencia=2019-07-09
+CpfCnpjPrestador=18110449000178
+InscricaoMunicipalPrestador=56713126
 RazaoSocialPrestador=TECNOSPEED TECNOLOGIA DA INFORMACAO
 InscricaoEstadualPrestador=081871680
 TipoLogradouroPrestador=Rua
@@ -64,14 +65,14 @@ TipoTributacao=6
 ExigibilidadeISS=1
 Operacao=A
 
-CodigoItemListaServico=15.05
-CodigoTributacaoMunicipio=15.05
+CodigoItemListaServico=1.05
+CodigoTributacaoMunicipio=10500200
 CodigoCnae=
 DiscriminacaoServico=SERVICOS DE RECEBIMENTO DE FATURAS
 
-MunicipioIncidencia=4115200
-CodigoCidadePrestacao=4115200
-DescricaoCidadePrestacao=Maringa
+MunicipioIncidencia=4314902
+CodigoCidadePrestacao=4314902
+DescricaoCidadePrestacao=Porto Alegre
 
 
 CpfCnpjTomador=04002391086
@@ -111,12 +112,12 @@ ValorDeducoes=0.00
 
 ValorServicos=0.10
 BaseCalculo=0.10
-AliquotaISS=5.8547
-ValorIss=0.05
+AliquotaISS=2.00
+ValorIss=0.00
 IssRetido=2
 ValorISSRetido=0.00
 ValorLiquidoNfse=0.10
-SALVARRPS";
+SALVARRPS");
 
       var tx2 = $@"
 formato=tx2

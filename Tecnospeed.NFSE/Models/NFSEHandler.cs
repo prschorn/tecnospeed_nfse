@@ -9,103 +9,106 @@ using Tecnospeed.NFSE.Models.Interfaces;
 
 namespace Tecnospeed.NFSE.Models
 {
-  public class NFSEHandler : INFSE
-  {
-    private readonly IAuthentication authentication;
-    public NFSEHandler(IAuthentication auth)
+    public class NFSEHandler : INFSE
     {
-      this.authentication = auth;
-    }
-
-    public async Task<NFSEDto> GetNfse(string lote, string nfse)
-    {
-      NFSEDto dtoResponse;
-      using (var httpclient = new HttpClient())
-      {
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{TecnospeedData.host}/{Constants.ConsultarNotaEndpoint}?grupo={TecnospeedData.grupo}&CNPJ={TecnospeedData.cnpj}&nlote={lote}&nnfse={nfse}");
-        request.Headers.Add("Authorization", this.authentication.ValidateUser());
-        var response = await httpclient.SendAsync(request);
-        var body = await response.Content.ReadAsStringAsync();
-        if(response.StatusCode == System.Net.HttpStatusCode.OK)
+        private readonly IAuthentication authentication;
+        public NFSEHandler(IAuthentication auth)
         {
-          dtoResponse = new NFSEDto
-          {
-            //TODO - CONVERT DATA
-          };
+            this.authentication = auth;
         }
-        else
+
+        public async Task<NFSEDto> GetNfse(string lote, string nfse)
         {
-          throw new Exception($"Erro ao consultar nota: {body}");
+            NFSEDto dtoResponse;
+            using (var httpclient = new HttpClient())
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{TecnospeedData.host}/{Constants.ConsultarNotaEndpoint}?grupo={TecnospeedData.grupo}&CNPJ={TecnospeedData.cnpj}&nlote={lote}&nnfse={nfse}");
+                request.Headers.Add("Authorization", this.authentication.ValidateUser());
+                var response = await httpclient.SendAsync(request);
+                var body = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    dtoResponse = new NFSEDto
+                    {
+                        //TODO - CONVERT DATA
+                    };
+                }
+                else
+                {
+                    throw new Exception($"Erro ao consultar nota: {body}");
+                }
+            }
+
+
+            return dtoResponse;
         }
-      }
 
-
-      return dtoResponse;
-    }
-
-    public async Task<byte[]> PrintNfseFile(string numNfse)
-    {
-      using (var httpClient = new HttpClient())
-      {
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{TecnospeedData.host}/{Constants.ImprimirNotaEndpoint}?Grupo={TecnospeedData.grupo}&CNPJ={TecnospeedData.cnpj}&NomeCidade={TecnospeedData.nomeCidade}&NumNFSe={numNfse}&url=1");
-        request.Headers.Add("Authorization", this.authentication.ValidateUser());
-        var response = await httpClient.SendAsync(request);
-        var body = await response.Content.ReadAsStringAsync();
-        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        public async Task<byte[]> PrintNfseFile(string numNfse)
         {
-          return System.Text.Encoding.UTF8.GetBytes(body);
+            using (var httpClient = new HttpClient())
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{TecnospeedData.host}/{Constants.ImprimirNotaEndpoint}?Grupo={TecnospeedData.grupo}&CNPJ={TecnospeedData.cnpj}&NomeCidade={TecnospeedData.nomeCidade}&NumNFSe={numNfse}&url=1");
+                request.Headers.Add("Authorization", this.authentication.ValidateUser());
+                var response = await httpClient.SendAsync(request);
+                var body = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return System.Text.Encoding.UTF8.GetBytes(body);
+                }
+                throw new Exception("Nota não encontrada");
+            }
         }
-        throw new Exception("Nota não encontrada");
-      }
-    }
 
-    public async Task<string> PrintNfseUrl(string numNfse)
-    {
-      using (var httpClient = new HttpClient())
-      {
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{TecnospeedData.host}/{Constants.ImprimirNotaEndpoint}?Grupo={TecnospeedData.grupo}&CNPJ={TecnospeedData.cnpj}&NomeCidade={TecnospeedData.nomeCidade}&NumNFSe={numNfse}&url=1");
-        request.Headers.Add("Authorization", this.authentication.ValidateUser());
-        var response = await httpClient.SendAsync(request);
-        var body = await response.Content.ReadAsStringAsync();
-        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        public async Task<string> PrintNfseUrl(string numNfse)
         {
-          return body;
+            using (var httpClient = new HttpClient())
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{TecnospeedData.host}/{Constants.ImprimirNotaEndpoint}?Grupo={TecnospeedData.grupo}&CNPJ={TecnospeedData.cnpj}&NomeCidade={TecnospeedData.nomeCidade}&NumNFSe={numNfse}&url=1");
+                request.Headers.Add("Authorization", this.authentication.ValidateUser());
+                var response = await httpClient.SendAsync(request);
+                var body = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return body;
+                }
+                throw new Exception("Nota não encontrada");
+            }
         }
-        throw new Exception("Nota não encontrada");
-      }
-    }
 
-    public async Task<HttpResponseMessage> sendData(RequestData data)
-    {
-      using (var client = new HttpClient())
-      {
-        var request = new HttpRequestMessage(HttpMethod.Post, $"{TecnospeedData.host}/{Constants.EnviarNotaEndpoint}");
-
-        //add body data to request
-        var keyValues = new List<KeyValuePair<string, string>>
+        public async Task<HttpResponseMessage> sendData(RequestData data)
         {
-          //tx2 content
-          new KeyValuePair<string, string>("Arquivo", TX2Handler.GenerateTx2FromData(data)),
+            using (var client = new HttpClient())
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, $"{TecnospeedData.host}/{Constants.EnviarNotaEndpoint}?"
+                    + $"grupo={TecnospeedData.grupo}&cnpj={TecnospeedData.cnpj}&nomecidade={TecnospeedData.nomeCidade}" +
+                    $"&arquivo={TX2Handler.GenerateTx2FromData(data)}"
+                    );
 
-          //CNPJ
-          new KeyValuePair<string, string>("CNPJ",TecnospeedData.cnpj),
+                ////add body data to request
+                //var keyValues = new List<KeyValuePair<string, string>>
+                //{
+                //  //tx2 content
+                //  new KeyValuePair<string, string>("Arquivo", TX2Handler.GenerateTx2FromData(data)),
 
-          //GRUPO
-          new KeyValuePair<string, string>("Grupo",TecnospeedData.grupo),
+                //  //CNPJ
+                //  new KeyValuePair<string, string>("CNPJ",TecnospeedData.cnpj),
 
-          //NOME CIDADE
-          new KeyValuePair<string, string>("NomeCidade",TecnospeedData.nomeCidade)
-        };
-        //add data to the request body
-        request.Content = new FormUrlEncodedContent(keyValues);
-        //add authorization header
-        request.Headers.Add("Authorization", this.authentication.ValidateUser());
-        //send data
-        var response = await client.SendAsync(request);
+                //  //GRUPO
+                //  new KeyValuePair<string, string>("Grupo",TecnospeedData.grupo),
 
-        return response;
-      }
-      
+                //  //NOME CIDADE
+                //  new KeyValuePair<string, string>("NomeCidade",TecnospeedData.nomeCidade)
+                //};
+                ////add data to the request body
+                //request.Content = new FormUrlEncodedContent(keyValues);
+                //add authorization header
+                request.Headers.Add("Authorization", this.authentication.ValidateUser());
+                //send data
+                var response = await client.SendAsync(request);
+
+                return response;
+            }
+
+        }
     }
-  }
 }
