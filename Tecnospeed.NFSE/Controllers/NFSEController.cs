@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Threading.Tasks;
+using Tecnospeed.Database.Models.DTOs;
 using Tecnospeed.Database.Repositories.Interfaces;
 using Tecnospeed.NFSE.Models;
 using Tecnospeed.NFSE.Models.Interfaces;
@@ -48,23 +49,36 @@ namespace Tecnospeed.NFSE.Controllers
 
             //TODO - SALVAR OS CAMPOS QUANDO HANDLE ESTIVER INFORMADO
             //TODO - GERAR TASK PARA 2 MINUTOS PARA CONSULTAR NOTA CASO STATUS NAO ESTEJA INFORMADO
-            var handle = responseBodyArray[0];
-            var lote = responseBodyArray[1];
-            var numero = responseBodyArray[2];
-            try
+            if (responseBodyArray.Length >= 4)
             {
-                var nfse = await this.nfseHandler.GetNfse(lote, numero);
-
-                //save information on database
-                await this.nfseRepository.SaveInformationAsync(nfse);
-                return this.Created(this.Url.ToString(), responseBody);
+                var handle = responseBodyArray[0];
+                var lote = responseBodyArray[1];
+                var numero = responseBodyArray[2];
+                var status = responseBodyArray[3];
+                var nfse = new NFSEDto
+                {
+                    Handle = handle,
+                    Status = status,
+                    Lote = lote,
+                    Numero = numero
+                };
+                try
+                {
+                    await this.nfseRepository.SaveInformationAsync(nfse);
+                }
+                catch (System.Exception ex)
+                {
+                    return this.StatusCode(400, ex.Message);
+                }
             }
-            catch (System.Exception ex)
-            {
-                return this.StatusCode(400, ex.Message);
-            }
+
+            //var nfse = await this.nfseHandler.GetNfse(lote, numero);
+
+            ////save information on database
+            //await this.nfseRepository.SaveInformationAsync(nfse);
 
 
+            return this.Created(this.Url.ToString(), responseBody);
         }
 
         [HttpGet]
