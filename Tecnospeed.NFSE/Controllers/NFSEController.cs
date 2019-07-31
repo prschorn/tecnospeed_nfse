@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Tecnospeed.Database.Models.DTOs;
@@ -55,20 +56,39 @@ namespace Tecnospeed.NFSE.Controllers
                 var lote = responseBodyArray[1];
                 var numero = responseBodyArray[2];
                 var status = responseBodyArray[3];
-                var nfse = new NFSEDto
+                if (status == "")
                 {
-                    Handle = handle,
-                    Status = status,
-                    Lote = lote,
-                    Numero = numero
-                };
-                try
-                {
-                    await this.nfseRepository.SaveInformationAsync(nfse);
+                    try
+                    {
+                        Task.Run(async () =>
+                        {
+                            await Task.Delay(TimeSpan.FromMinutes(2));
+                            var nfse = await this.nfseHandler.GetNfse(lote, numero);
+                            await this.nfseRepository.SaveInformationAsync(nfse);
+                        });
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
                 }
-                catch (System.Exception ex)
+                else
                 {
-                    return this.StatusCode(400, ex.Message);
+                    var nfse = new NFSEDto
+                    {
+                        Handle = handle,
+                        Status = status,
+                        Lote = lote,
+                        Numero = numero
+                    };
+                    try
+                    {
+                        await this.nfseRepository.SaveInformationAsync(nfse);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        return this.StatusCode(400, ex.Message);
+                    }
                 }
             }
 
